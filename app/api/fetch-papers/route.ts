@@ -91,12 +91,15 @@ export async function POST(req: NextRequest) {
         paperTitles.push(paper.title);
       }
     } catch (error) {
-      console.error('Semantic Scholar fetch error:', error);
+      console.warn('Semantic Scholar API unavailable, continuing with arXiv results only');
     }
 
     if (papersAdded.length === 0) {
       return NextResponse.json(
-        { error: 'No papers found for the given query. Try different keywords or topics.' },
+        { 
+          error: 'No papers found for the given query. Try different keywords or topics.',
+          message: 'Both arXiv and Semantic Scholar returned no results. Please refine your search.' 
+        },
         { status: 404 }
       );
     }
@@ -182,11 +185,19 @@ async function fetchFromSemanticScholar(query: string, authors?: string[]): Prom
   const url = `https://api.semanticscholar.org/graph/v1/paper/search?query=${encodeURIComponent(searchQuery)}&limit=5&fields=title,abstract,authors,year,url,fieldsOfStudy`;
   
   try {
+    // Add delay to avoid rate limiting
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
     const response = await fetch(url, {
       headers: {
         'Accept': 'application/json',
       },
     });
+    
+    if (response.status === 429) {
+      console.warn('Semantic Scholar rate limit exceeded, skipping...');
+      return [];
+    }
     
     if (!response.ok) {
       console.error('Semantic Scholar API error:', response.status);
