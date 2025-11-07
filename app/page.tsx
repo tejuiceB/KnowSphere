@@ -1,206 +1,246 @@
-import Link from 'next/link';
+'use client';
+
+import { useRouter } from 'next/navigation';
+import { Search, Sparkles, Zap, BookOpen, ArrowRight, Github } from 'lucide-react';
 
 export default function Home() {
+  const router = useRouter();
+
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 py-16 text-center">
-        <div className="flex justify-center mb-8">
-          <img src="/knowsphere-logo.svg" alt="KnowSphere" className="w-32 h-32 md:w-48 md:h-48 animate-pulse" />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+      {/* Header */}
+      <header className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center space-x-3">
+              <img src="/knowsphere-logo.svg" alt="KnowSphere" className="h-10 w-10" />
+              <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                KnowSphere
+              </span>
+            </div>
+            <nav className="hidden md:flex items-center space-x-8">
+              <a href="#features" className="text-gray-600 hover:text-blue-600 transition-colors">Features</a>
+              <a href="#how-it-works" className="text-gray-600 hover:text-blue-600 transition-colors">How It Works</a>
+              <a href="https://github.com/tejuiceB/KnowSphere" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors">
+                <Github className="h-5 w-5" />
+                <span>GitHub</span>
+              </a>
+            </nav>
+          </div>
         </div>
-        
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-          KnowSphere
-        </h1>
-        
-        <p className="text-xl md:text-2xl text-gray-700 mb-4 max-w-3xl mx-auto font-medium">
-          AI-Powered Knowledge Discovery Platform
-        </p>
-        
-        <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
-          Transform your research workflow with intelligent hybrid search and conversational AI that finds, reads, and synthesizes academic papers in seconds.
-        </p>
-        
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Link href="/search">
-            <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-lg font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all shadow-lg">
-              🚀 Start Exploring
-            </button>
-          </Link>
-          <a href="https://github.com/tejuiceB/KnowSphere" target="_blank" rel="noopener noreferrer">
-            <button className="px-8 py-4 bg-white text-gray-800 text-lg font-semibold rounded-lg hover:bg-gray-100 transform hover:scale-105 transition-all shadow-lg border-2 border-gray-200">
-              ⭐ View on GitHub
-            </button>
-          </a>
+      </header>
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-8">
+            <Sparkles className="h-4 w-4" />
+            <span>Powered by Elasticsearch + Google Gemini AI</span>
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+            AI-Powered
+            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent"> Knowledge Discovery</span>
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">
+            Transform academic research with intelligent conversational search. Ask questions naturally, get cited answers instantly.
+          </p>
+
+          <button
+            onClick={() => router.push('/search')}
+            className="group inline-flex items-center space-x-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
+          >
+            <span>Start Exploring</span>
+            <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+          </button>
+
+          <p className="text-sm text-gray-500 mt-4">No sign-up required • 2000+ papers indexed</p>
+        </div>
+
+        {/* Hero Image/Illustration */}
+        <div className="max-w-5xl mx-auto mt-16">
+          <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 p-8">
+            <div className="flex items-center space-x-2 mb-4">
+              <div className="h-3 w-3 rounded-full bg-red-500"></div>
+              <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+              <div className="h-3 w-3 rounded-full bg-green-500"></div>
+            </div>
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-8 text-left">
+              <div className="flex items-start space-x-3 mb-4">
+                <Search className="h-6 w-6 text-blue-600 mt-1" />
+                <div className="flex-1">
+                  <p className="text-gray-700 font-medium mb-2">What are the latest advances in transformer architectures?</p>
+                  <div className="bg-white rounded-lg p-4 text-sm text-gray-600 border border-gray-200">
+                    <p className="mb-2">📊 <strong>Summary:</strong> Recent advances include efficient attention mechanisms, sparse transformers...</p>
+                    <p className="text-blue-600">📚 Cited from 5 research papers</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="container mx-auto px-4 py-16">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
-          Why Choose KnowSphere?
-        </h2>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Feature 1 */}
-          <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
-            <div className="text-4xl mb-4">🔍</div>
-            <h3 className="text-xl font-bold mb-3 text-gray-800">Hybrid Search</h3>
-            <p className="text-gray-600">
-              Combines semantic understanding (ELSER) with precise keyword matching (BM25) for optimal results.
-            </p>
+      <section id="features" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why KnowSphere?</h2>
+            <p className="text-xl text-gray-600">Cutting-edge AI technology meets academic research</p>
           </div>
 
-          {/* Feature 2 */}
-          <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
-            <div className="text-4xl mb-4">💬</div>
-            <h3 className="text-xl font-bold mb-3 text-gray-800">Conversational AI</h3>
-            <p className="text-gray-600">
-              Ask questions naturally and get context-aware responses powered by Google Gemini 2.0 Flash.
-            </p>
-          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-8 hover:shadow-lg transition-shadow">
+              <div className="bg-blue-600 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                <Search className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Hybrid Search</h3>
+              <p className="text-gray-600">
+                Combines semantic understanding (ELSER) with keyword matching (BM25) for unmatched relevance.
+              </p>
+            </div>
 
-          {/* Feature 3 */}
-          <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
-            <div className="text-4xl mb-4">📚</div>
-            <h3 className="text-xl font-bold mb-3 text-gray-800">Smart Citations</h3>
-            <p className="text-gray-600">
-              Every answer backed by relevant papers with inline citations and source links.
-            </p>
-          </div>
+            <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl p-8 hover:shadow-lg transition-shadow">
+              <div className="bg-indigo-600 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                <Sparkles className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">AI-Powered Answers</h3>
+              <p className="text-gray-600">
+                Google Gemini AI generates comprehensive, cited responses with evidence from research papers.
+              </p>
+            </div>
 
-          {/* Feature 4 */}
-          <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-shadow border border-gray-100">
-            <div className="text-4xl mb-4">⚡</div>
-            <h3 className="text-xl font-bold mb-3 text-gray-800">Lightning Fast</h3>
-            <p className="text-gray-600">
-              Get comprehensive answers in under 3 seconds, searching through thousands of papers.
-            </p>
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-8 hover:shadow-lg transition-shadow">
+              <div className="bg-purple-600 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                <Zap className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Conversational Memory</h3>
+              <p className="text-gray-600">
+                Ask follow-up questions naturally. System remembers context throughout your research session.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section className="container mx-auto px-4 py-16 bg-white rounded-2xl shadow-xl my-8">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
-          How It Works
-        </h2>
-        
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {/* Step 1 */}
-          <div className="text-center">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl font-bold text-blue-600">1</span>
+      {/* How It Works */}
+      <section id="how-it-works" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
+            <p className="text-xl text-gray-600">Three simple steps to discovery</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                1
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Ask Naturally</h3>
+              <p className="text-gray-600">
+                Type your research question in plain language, just like talking to a colleague.
+              </p>
             </div>
-            <h3 className="text-xl font-bold mb-3 text-gray-800">Ask Your Question</h3>
-            <p className="text-gray-600">
-              Type your research question in natural language - no special syntax required.
-            </p>
-          </div>
 
-          {/* Step 2 */}
-          <div className="text-center">
-            <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl font-bold text-purple-600">2</span>
+            <div className="text-center">
+              <div className="bg-indigo-600 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                2
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">AI Searches & Analyzes</h3>
+              <p className="text-gray-600">
+                Hybrid search finds relevant papers, AI synthesizes insights with citations.
+              </p>
             </div>
-            <h3 className="text-xl font-bold mb-3 text-gray-800">AI Searches & Analyzes</h3>
-            <p className="text-gray-600">
-              Our hybrid search finds relevant papers and AI reads them to understand the content.
-            </p>
-          </div>
 
-          {/* Step 3 */}
-          <div className="text-center">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl font-bold text-green-600">3</span>
+            <div className="text-center">
+              <div className="bg-purple-600 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                3
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Get Cited Answers</h3>
+              <p className="text-gray-600">
+                Receive comprehensive answers backed by evidence from academic papers.
+              </p>
             </div>
-            <h3 className="text-xl font-bold mb-3 text-gray-800">Get Synthesized Answer</h3>
-            <p className="text-gray-600">
-              Receive a comprehensive answer with citations, comparisons, and key insights.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-4 gap-8 text-center">
-          <div className="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-8 rounded-xl shadow-lg">
-            <div className="text-4xl font-bold mb-2">2000+</div>
-            <div className="text-lg">Research Papers</div>
-          </div>
-          
-          <div className="bg-gradient-to-br from-purple-500 to-purple-600 text-white p-8 rounded-xl shadow-lg">
-            <div className="text-4xl font-bold mb-2">&lt;3s</div>
-            <div className="text-lg">Response Time</div>
-          </div>
-          
-          <div className="bg-gradient-to-br from-green-500 to-green-600 text-white p-8 rounded-xl shadow-lg">
-            <div className="text-4xl font-bold mb-2">95%</div>
-            <div className="text-lg">Time Saved</div>
-          </div>
-          
-          <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-8 rounded-xl shadow-lg">
-            <div className="text-4xl font-bold mb-2">∞</div>
-            <div className="text-lg">Paper Additions</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Technology Stack Section */}
-      <section className="container mx-auto px-4 py-16 bg-gray-50 rounded-2xl my-8">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
-          Powered By Leading Technologies
-        </h2>
-        
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="bg-white p-6 rounded-xl shadow-lg text-center">
-            <div className="text-5xl mb-4">🔷</div>
-            <h3 className="text-xl font-bold mb-2 text-gray-800">Elasticsearch</h3>
-            <p className="text-gray-600">ELSER v2 semantic search with BM25 hybrid ranking</p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-xl shadow-lg text-center">
-            <div className="text-5xl mb-4">🤖</div>
-            <h3 className="text-xl font-bold mb-2 text-gray-800">Google Vertex AI</h3>
-            <p className="text-gray-600">Gemini 2.0 Flash for intelligent response generation</p>
-          </div>
-          
-          <div className="bg-white p-6 rounded-xl shadow-lg text-center">
-            <div className="text-5xl mb-4">⚡</div>
-            <h3 className="text-xl font-bold mb-2 text-gray-800">Next.js</h3>
-            <p className="text-gray-600">Modern React framework with TypeScript</p>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto px-4 py-16 text-center">
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-12 rounded-2xl shadow-2xl">
-          <h2 className="text-4xl font-bold mb-4">Ready to Transform Your Research?</h2>
-          <p className="text-xl mb-8 opacity-90">
-            Join researchers worldwide who are accelerating their literature reviews with KnowSphere
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
+        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <BookOpen className="h-16 w-16 text-white mx-auto mb-6" />
+          <h2 className="text-4xl font-bold text-white mb-6">
+            Ready to Transform Your Research?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8">
+            Join researchers worldwide using AI to accelerate knowledge discovery
           </p>
-          <Link href="/search">
-            <button className="px-10 py-5 bg-white text-blue-600 text-xl font-bold rounded-lg hover:bg-gray-100 transform hover:scale-105 transition-all shadow-lg">
-              Start Exploring Now →
-            </button>
-          </Link>
+          <button
+            onClick={() => router.push('/search')}
+            className="group inline-flex items-center space-x-3 bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+          >
+            <span>Get Started Now</span>
+            <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+          </button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="container mx-auto px-4 py-8 text-center text-gray-600 border-t border-gray-200">
-        <p className="mb-2">
-          Built with ❤️ by Team Yoddha Universe
-        </p>
-        <p className="text-sm">
-          Open source • MIT License • 
-          <a href="https://github.com/tejuiceB/KnowSphere" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline ml-1">
-            GitHub
-          </a>
-        </p>
+      <footer className="bg-gray-900 text-gray-300 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center space-x-2 mb-4">
+                <img src="/knowsphere-logo.svg" alt="KnowSphere" className="h-8 w-8" />
+                <span className="text-xl font-bold text-white">KnowSphere</span>
+              </div>
+              <p className="text-sm text-gray-400">
+                AI-powered knowledge discovery for researchers worldwide.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-white font-semibold mb-4">Product</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
+                <li><a href="#how-it-works" className="hover:text-white transition-colors">How It Works</a></li>
+                <li><button onClick={() => router.push('/search')} className="hover:text-white transition-colors">Try Now</button></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-semibold mb-4">Technology</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="https://www.elastic.co/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Elasticsearch</a></li>
+                <li><a href="https://cloud.google.com/vertex-ai" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Google Vertex AI</a></li>
+                <li><a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Next.js</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-white font-semibold mb-4">Resources</h4>
+              <ul className="space-y-2 text-sm">
+                <li><a href="https://github.com/tejuiceB/KnowSphere" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a></li>
+                <li><a href="https://github.com/tejuiceB/KnowSphere#readme" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Documentation</a></li>
+                <li><a href="https://github.com/tejuiceB/KnowSphere/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">License</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-sm text-gray-400">
+              © 2025 KnowSphere by Team Yoddha Universe. All rights reserved.
+            </p>
+            <div className="flex items-center space-x-6 mt-4 md:mt-0">
+              <a href="https://github.com/tejuiceB/KnowSphere" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                <Github className="h-5 w-5" />
+              </a>
+              <span className="text-sm text-gray-400">MIT License</span>
+            </div>
+          </div>
+        </div>
       </footer>
-    </main>
+    </div>
   );
 }

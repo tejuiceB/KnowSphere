@@ -5,6 +5,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { 
@@ -23,7 +24,8 @@ import {
   Clock,
   Trash2,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Home
 } from 'lucide-react';
 
 interface Message {
@@ -47,6 +49,7 @@ interface SearchInterfaceProps {
 }
 
 export default function EnhancedSearchInterface({ showAnalytics = false }: SearchInterfaceProps) {
+  const router = useRouter();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -445,6 +448,14 @@ export default function EnhancedSearchInterface({ showAnalytics = false }: Searc
 
             {/* Action Buttons */}
             <div className="flex items-center gap-3">
+              <button
+                onClick={() => router.push('/')}
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                title="Back to Home"
+              >
+                <Home className="w-4 h-4" />
+                <span>Home</span>
+              </button>
               {messages.length > 0 && (
                 <div className="flex items-center gap-2 text-sm text-gray-600">
                   <MessageSquare className="w-4 h-4" />
