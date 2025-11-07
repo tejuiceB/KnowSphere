@@ -1,0 +1,49 @@
+{
+  "name": "knowsphere",
+  "version": "1.0.0",
+  "description": "AI-Powered Knowledge Discovery - Intelligent conversational search combining Elasticsearch hybrid search with Google Cloud Gemini AI",
+  "author": "Team Yoddha Universe",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/knowsphere"
+  },
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "ingest-data": "tsx scripts/ingest-data.ts",
+    "ingest-research": "tsx scripts/ingest-research.ts",
+    "add-professor": "tsx scripts/add-professor-papers.ts",
+    "add-professor-manual": "tsx scripts/add-professor-manual.ts"
+  },
+  "dependencies": {
+    "@elastic/elasticsearch": "^9.2.0",
+    "@google-cloud/vertexai": "^1.10.0",
+    "@google/generative-ai": "^0.21.0",
+    "axios": "^1.13.2",
+    "cheerio": "^1.1.2",
+    "lucide-react": "^0.552.0",
+    "next": "16.0.1",
+    "pdf-parse": "^2.4.5",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-markdown": "^10.1.0",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20.19.24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv": "^16.4.5",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.1",
+    "tailwindcss": "^4",
+    "tsx": "^4.19.2",
+    "typescript": "^5"
+  }
+}
