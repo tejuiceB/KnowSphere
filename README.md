@@ -73,9 +73,9 @@ graph TB
 
     subgraph "Application Layer"
         API[Next.js API Routes]
-        Search[/api/search]
-        Index[/api/index]
-        Fetch[/api/fetch-papers]
+        Search["API: Search"]
+        Index["API: Index"]
+        Fetch["API: Fetch Papers"]
     end
 
     subgraph "Data Layer"
